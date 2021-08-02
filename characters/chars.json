@@ -1,0 +1,12 @@
+{"charCount":8,
+    "chars":[
+    {"char":"8Bit","desc":"A carefree Scratcher who enjoys coding games and projects in Scratch and JavaScript.", "charColor":"#522700", "charBgColor":"#ffcd43", "charWidth": "75px"},
+    {"char":"Shift Key","desc":"Professional Sans fanboy.<br>That's all I have to say to describe him.", "charColor":"#1c6bff", "charBgColor":"#393939", "textColor": "white"},
+    {"char":"Backspace","desc":"Shift Key's brother, he only speaks in reverse.", "charColor":"#9340ff", "charBgColor":"#393939", "textColor": "white"},
+    {"char":"Red","desc":"A stick figure who looks almost exactly like 8Bit.<br>He claims to be 8Bit from an alternate universe, although he's wrong.", "charColor":"#520000", "charBgColor":"#ff0026", "charWidth": "75px"},
+    {"char":"Lamppost","desc":"A lamppost.<br>That's literally it.", "charColor":"#5e2e00", "charBgColor":"#cdcdcd", "charWidth": "50px"},
+    {"char":"Boyfriend's Hat","desc":"The OSC's next big rapper.<br>He can only speak a certain language, but everyone understands him.", "charColor":"#ff2d32", "charBgColor":"#0066cc", "textColor": "#c7c7c7"},
+    {"char":"YouTubey","desc":"A YouTube play button.", "charColor":"white", "charBgColor":"#ff0026", "charWidth": "100px"},
+    {"char":"Foldery","desc":"Your generic <em>Windows 10</em> folder. He currently contains <span title='nicee (¬‿¬)'>69,420</span> memes, and he knows about the homework folder! 😱", "charColor":"#994b00", "charWidth": "100px"}
+]
+}

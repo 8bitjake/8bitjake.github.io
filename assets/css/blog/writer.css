@@ -1,0 +1,27 @@
+@import url('style.css');
+.post {
+    height: min-content !important;
+    overflow:auto;
+}
+
+input {
+background-color: #1f3244;
+border:none;
+border-radius: 5px;
+color:white;
+}
+
+textarea {
+    background-color: #1f3244;
+    border:none;
+    border-radius: 7.5px;
+    color:white;
+}
+
+button {
+    background-color: #002446;
+    border:none;
+    border-radius: 5px;
+    color:white;
+    cursor:pointer;
+    }

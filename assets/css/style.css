@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap');
+* {
+    transition: all 0.175s ease;
+}
+img.emoji {
+    height: 1.1em;
+    width: 1.1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+    position: relative;
+    top: 2.5px;
+ }
+body {
+    background-color: #365775;
+    font-family: 'Roboto';
+    color:white
+}
+.body {
+    position:relative;
+    top: 50px;
+    text-align: center;
+}
+.main {
+    position:relative;
+    top: 25px;
+}
+.caption {
+    color:rgb(182, 182, 182);
+    font-size:90%;
+    font-style:italic;
+    position:relative;
+    bottom:17.5px;
+}
+header {
+    background-color:#23374bd8;
+    width: 100%;
+    height: 15px;
+    padding:10px;
+    position: fixed;
+    top: 0;
+    white-space: nowrap;
+    z-index:100;
+}
+.header-content {
+    position: relative;
+}
+
+a {
+    text-decoration:none;
+    color:rgb(185, 213, 255) !important;
+}
+.header-content a {
+    color:rgb(149, 192, 255) !important;
+  font-size: 1em !important;
+}
+
+ul {
+    list-style-position: inside;
+    position: relative;
+    right: 25px;
+}
+
+.body a:hover,a:focus {
+    animation-duration: 0.3s;
+  animation-name: size;
+  font-size: 1.1em;
+}
+
+@keyframes size {
+    0% {
+        font-size: 1em;
+    }
+  
+    50% {
+        font-size: 1.125em;
+    }
+
+    100% {
+        font-size: 1.1em;
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+::-webkit-scrollbar {
+    width: 12.5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f179; 
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  } */

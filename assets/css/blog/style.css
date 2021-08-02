@@ -1,0 +1,36 @@
+.post {
+    border-radius: 22.5px;
+    background-color:#1f3244;
+    padding: 15px; 
+    margin-bottom: 1%;
+    width: 49%;
+    height: 156.504px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    left: 25%;
+    color: white;
+}
+
+.user {
+position: relative;
+right:35%;
+font-size: medium;
+}
+
+.divider {
+  border: solid #335372;
+  width: 100%;
+  border-radius: 2.5px;
+}
+
+.postContent {
+position: relative;
+bottom:3em;
+overflow:visible;
+}
+
+.postName {
+font-weight: bold;
+}

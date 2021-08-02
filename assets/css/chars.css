@@ -1,0 +1,17 @@
+.charName {
+font-size: 5em;
+font-weight: bolder;
+color: var(--textColor) !important;
+text-shadow: 2.5px 2.5px rgba(0, 0, 0, 0.500);
+}
+.charBG {
+position: relative;
+left: 25%;
+background-color: var(--bgColor);
+box-shadow: 10px 10px rgba(0, 0, 0, 0.500);
+color: var(--divTextColor) !important;
+width: 49%;
+padding: 10px;
+margin-bottom: 25px;
+text-align: -webkit-center;
+}

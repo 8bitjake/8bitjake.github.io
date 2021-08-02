@@ -1,0 +1,23 @@
+@import url('style.css');
+
+.post {
+    border-radius: 0px;
+    background-color:#1f324400;
+    height: max-content;
+}
+
+.divider {
+    display: none;
+  }
+
+  .postName {
+    font-size: 1.5em;
+    position: relative;
+    top:0.5em;
+    }
+
+    .user {
+        position: relative;
+        left:0px;
+        bottom:5px;
+        }
