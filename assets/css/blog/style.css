@@ -10,13 +10,19 @@
     white-space: nowrap;
     position: relative;
     left: 25%;
-    color: white;
 }
 
 .user {
 position: relative;
 right:35%;
 font-size: medium;
+}
+
+.user::after {
+  content: '8BitJake';
+  position:relative;
+  bottom:1em;
+  left:0.25em;
 }
 
 .divider {

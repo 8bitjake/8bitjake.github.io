@@ -12,6 +12,7 @@ var post;
 var pfp = 'https://uploads.scratch.mit.edu/users/avatars/19837061.png'
 var username = '8BitJake'
 var p;
+var postLink;
 async function fetchAPI(url) {
     
   // Storing response
@@ -37,7 +38,7 @@ document.getElementById('wiwo').innerHTML = "<strong>What I'm Working On</strong
 } else if (page == 'chars') {
 
 await fetchAPI('chars.json')
-for (let i = 0; i < data.charCount; i++) {
+for (let i = 0; i < data.chars.length; i++) {
     charData = data.chars[i]
     document.getElementsByClassName('main')[0].innerHTML += '<div class="charBG"><span class="charName">' + charData.char.toUpperCase() + '</span>' +
     '<br>' + charData.desc + '<br><br> <img class="charImg" src="/assets/img/char/' + charData.char + '.svg" width="' + ((charData.charWidth) ? charData.charWidth  : `25%`) +  '"height="auto" alt="' + charData.char + '"></div>'
@@ -57,10 +58,10 @@ for (let i = 0; i < data.charCount; i++) {
 
 } else if (page == 'blog') {
 await fetchAPI('posts.json')
-for (let i = 0; i < data.postCount; i++) {
+for (let i = 0; i < data.posts.length; i++) {
   postData = data.posts[i];
 createPost(i);
-document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;"> <span style="position:relative; bottom:1em;">' + username + '</span>'
+document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">' // <span style="position:relative; bottom:1em;">' + username + '</span>'
 document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
 }
 } else if (page == 'post-viewer') {
@@ -72,12 +73,12 @@ document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postConten
   console.log(p);
  if (p) {
   var postTemplate = '<a href="../">⬅ Go back</a><br><br><div class="post"><span class="user"></span><br><br></div>'
-  for (let i = data.postCount; i >= 0; i--) {
+  for (let i = data.posts.length; i >= 0; i--) {
     console.log(i)
     console.log(i == p)
     if (i == p) {
   document.getElementsByClassName('main')[0].innerHTML = postTemplate;
-  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;"> <span style="position:relative; bottom:1em;">' + username + '</span>'
+  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">'
 document.getElementsByClassName('post')[0].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
 document.title += ' ' + postData.title
     }
@@ -86,6 +87,11 @@ document.title += ' ' + postData.title
  } else {
    window.location.href="../"
  }
+} else if (page == 'bfancn') {
+  await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028');
+  document.getElementById('desc').innerHTML = data.description.split('\n').join('<br>')
+  await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028/projects');
+  document.getElementsByClassName('main')[0].innerHTML += '<br><div class="dark" style="cursor:pointer;" onclick="window.open(`http://scratch.mit.edu/projects/` + data[data.length - 1].id)">' + data[data.length - 1].title + ' ↗<br><br><img src="' + data[data.length - 1].image + '" alt="' + data[data.length - 1].title + '" style="border-radius: 5px;"></div>'
 }
 
 document.getElementsByTagName("body")[0].innerHTML=twemoji.parse(document.getElementsByTagName("body")[0].innerHTML, { folder: 'svg', ext: '.svg'});
@@ -97,7 +103,8 @@ function replaceAll(string, search, replace) {
   }
 
   function createPost(postNum) {
-    var postTemplate = '<a href="post-viewer/?p=' + postNum + '"><div class="post"><span class="user"></span></div></a>'
+    postLink = 'post-viewer/?p=' + postNum;
+    var postTemplate = '<div class="post" onclick="location.href = postLink"><span class="user"></span></div></a>'
     document.getElementsByClassName('main')[0].innerHTML += postTemplate
 
 

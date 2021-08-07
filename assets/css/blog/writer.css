@@ -25,3 +25,7 @@ button {
     color:white;
     cursor:pointer;
     }
+
+    .user::after {
+        content: 'User' !important;
+      }

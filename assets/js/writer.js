@@ -11,7 +11,7 @@ function copyJson() {
     var txt = ',{"title":"' + document.getElementById('title').value + '","content":"' + document.getElementById('content').value + '"}'
     document.querySelector('#copy').innerHTML = txt
     copy(document.querySelector('#copy').innerHTML)
-    alert('The JSON data has been copied!\nPlease make sure to increase the "postCount" JSON value after pasting!')
+    alert('The JSON data has been copied!')
 }
 document.getElementsByTagName('textarea')[0].innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis erat euismod, hendrerit nunc in, volutpat nisl. Aenean orci lorem<br>mattis non diam quis, ultricies aliquam neque. Quisque tempor ut felis et maximus. Maecenas lobortis justo posuere, dictum leo vitae,<br>aliquet sapien.'
 const whitespaceChars = [' ', '', '​', ' ']
