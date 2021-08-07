@@ -91,7 +91,7 @@ document.title += ' ' + postData.title
   await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028');
   document.getElementById('desc').innerHTML = data.description.split('\n').join('<br>')
   await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028/projects');
-  document.getElementsByClassName('main')[0].innerHTML += '<br><div class="dark" style="cursor:pointer;" onclick="window.open(`http://scratch.mit.edu/projects/` + data[data.length - 1].id)">' + data[data.length - 1].title + ' ↗<br><br><img src="' + data[data.length - 1].image + '" alt="' + data[data.length - 1].title + '" style="border-radius: 5px;"></div>'
+  document.getElementsByClassName('main')[0].innerHTML += '<br><div class="dark" style="cursor:pointer;" onclick="window.open(`http://scratch.mit.edu/projects/` + data[data.length - 1].id)">' + data[data.length - 1].title + ' ↗<br><br><img src="' + data[data.length - 1].image + '" alt="' + data[data.length - 1].title + '" style="border-radius: 5px; position:relative; bottom:10px;"></div>'
 }
 
 document.getElementsByTagName("body")[0].innerHTML=twemoji.parse(document.getElementsByTagName("body")[0].innerHTML, { folder: 'svg', ext: '.svg'});
