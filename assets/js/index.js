@@ -13,6 +13,7 @@ var pfp = 'https://uploads.scratch.mit.edu/users/avatars/19837061.png'
 var username = '8BitJake'
 var p;
 var postLink;
+let oldData;
 async function fetchAPI(url) {
     
   // Storing response
@@ -26,15 +27,6 @@ async function fetchAPI(url) {
   }
 }
 (async () => {
-  /* if (page == 'blog' || page == 'post-viewer') {
-    console.log(page)
-    await fetchAPI('/blog/posts.json');
-    var oldData = data;
-      await fetchAPI('https://8bitjake.github.io/blog/posts.json');
-      if (oldData.length < data.length) {
-        document.getElementById('notif').style.display = 'block';
-      }
-  } */
 if (page == 'index') {
 await fetchAPI('https://my-ocular.jeffalo.net/api/user/8bitjake');
 document.getElementById('status').innerHTML = '<div id="status-dot"></div> <em title="Status taken from ocular.jeffalo.net">' + data.status + '</em>';
