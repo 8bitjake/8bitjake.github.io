@@ -1,4 +1,3 @@
-{"posts":[
-        {"title":"Blogging System - Does it work?!","content":"If you're reading this, then it appears that the blogging system is working!<br>You can write your own blog post like this one - click <a href='/blog/post-writer/'>here</a>!"}
+[
+{"title":"Blogging System - Does it work?!","content":"If you're reading this, then it appears that the blogging system is working!<br>You can write your own blog post like this one - click <a href='/blog/post-writer/'>here</a>!"}
 ]
-}

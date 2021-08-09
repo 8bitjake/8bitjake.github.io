@@ -40,3 +40,20 @@ overflow:visible;
 .postName {
 font-weight: bold;
 }
+
+#notif {
+  z-index:200;
+  background-color: rgba(255, 66, 66, 0.5);
+  width:15vw;
+  border-radius: 5px;
+  text-align: center;
+  position:fixed;
+  left:42.5%;
+  top:0px;
+  height:5vh;
+}
+
+#notifContent {
+  position:relative;
+  top:5px;
+}

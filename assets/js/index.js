@@ -26,6 +26,15 @@ async function fetchAPI(url) {
   }
 }
 (async () => {
+  /* if (page == 'blog' || page == 'post-viewer') {
+    console.log(page)
+    await fetchAPI('/blog/posts.json');
+    var oldData = data;
+      await fetchAPI('https://8bitjake.github.io/blog/posts.json');
+      if (oldData.length < data.length) {
+        document.getElementById('notif').style.display = 'block';
+      }
+  } */
 if (page == 'index') {
 await fetchAPI('https://my-ocular.jeffalo.net/api/user/8bitjake');
 document.getElementById('status').innerHTML = '<div id="status-dot"></div> <em title="Status taken from ocular.jeffalo.net">' + data.status + '</em>';
@@ -58,8 +67,8 @@ for (let i = 0; i < data.chars.length; i++) {
 
 } else if (page == 'blog') {
 await fetchAPI('posts.json')
-for (let i = 0; i < data.posts.length; i++) {
-  postData = data.posts[i];
+for (let i = 0; i < data.length; i++) {
+  postData = data[i];
 createPost(i);
 document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">' // <span style="position:relative; bottom:1em;">' + username + '</span>'
 document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
@@ -69,11 +78,11 @@ document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postConten
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   p = urlParams.get('p');
-  postData = data.posts[p];
+  postData = data[p];
   console.log(p);
  if (p) {
   var postTemplate = '<a href="../">⬅ Go back</a><br><br><div class="post"><span class="user"></span><br><br></div>'
-  for (let i = data.posts.length; i >= 0; i--) {
+  for (let i = data.length; i >= 0; i--) {
     console.log(i)
     console.log(i == p)
     if (i == p) {
@@ -111,4 +120,8 @@ function replaceAll(string, search, replace) {
 
   }
 
+
+
+
+  /* POST NOTIFIER */
 })()
