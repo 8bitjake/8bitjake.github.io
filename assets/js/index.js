@@ -14,6 +14,7 @@ var username = '8BitJake'
 var p;
 var postLink;
 let oldData;
+const postNumLink = [];
 async function fetchAPI(url) {
     
   // Storing response
@@ -62,9 +63,20 @@ await fetchAPI('posts.json')
 for (let i = 0; i < data.length; i++) {
   postData = data[i];
 createPost(i);
-document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">' // <span style="position:relative; bottom:1em;">' + username + '</span>'
-document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
+document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">'
+document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><div style="position:relative; bottom:1em;"><span>Post ' + (i + 1) + '</span><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></div>';
 }
+let postContent = document.getElementsByClassName('postContent');
+/* var att = document.createAttribute('onclick');
+att.value = 'return false'; */
+for (let i = 0; i <= postContent.length - 1; i++) {
+let links = postContent[i].getElementsByTagName('a')
+for (let ii = 0; ii <= links.length - 1; ii++) {
+ // links[i].setAttributeNode(att);
+  links[i].removeAttribute('href');
+}
+}
+
 } else if (page == 'post-viewer') {
   await fetchAPI('../posts.json')
   const queryString = window.location.search;
@@ -79,7 +91,7 @@ document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postConten
     console.log(i == p)
     if (i == p) {
   document.getElementsByClassName('main')[0].innerHTML = postTemplate;
-  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">'
+  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;"><br><br><span>Post ' + (i + 1) + '</span>'
 document.getElementsByClassName('post')[0].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
 document.title += ' ' + postData.title
     }
@@ -104,16 +116,8 @@ function replaceAll(string, search, replace) {
   }
 
   function createPost(postNum) {
-    postLink = 'post-viewer/?p=' + postNum;
-    var postTemplate = '<div class="post" onclick="location.href = postLink"><span class="user"></span></div></a>'
+    postNumLink.push(postNum);
+       var postTemplate = '<div class="post" onclick="location.href = `post-viewer/?p=` + postNumLink[' + postNum + ']"><span class="user"></span></div></a>'
     document.getElementsByClassName('main')[0].innerHTML += postTemplate
-
-
-
-  }
-
-
-
-
-  /* POST NOTIFIER */
+    }
 })()

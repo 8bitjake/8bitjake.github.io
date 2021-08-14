@@ -47,7 +47,7 @@ header {
 
 a {
     text-decoration:none;
-    color:rgb(185, 213, 255) !important;
+    color:rgb(185, 213, 255);
 }
 .header-content a {
     color:rgb(149, 192, 255) !important;

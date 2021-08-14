@@ -18,13 +18,6 @@ right:35%;
 font-size: medium;
 }
 
-.user::after {
-  content: '8BitJake';
-  position:relative;
-  bottom:1em;
-  left:0.25em;
-}
-
 .divider {
   border: solid #335372;
   width: 100%;
