@@ -9,7 +9,7 @@ Please do not complain about this.
 var data;
 var charData;
 var post;
-var pfp = 'https://uploads.scratch.mit.edu/users/avatars/19837061.png'
+var pfp = '/assets/img/pfp.gif';
 var username = '8BitJake'
 var p;
 var postLink;
@@ -28,15 +28,17 @@ async function fetchAPI(url) {
   }
 }
 (async () => {
+document.getElementsByTagName("header")[0].innerHTML=`<div class="header-content"><a href="/">home</a> | <a href="/characters">characters</a> | <a href="/blog">blog</a> | &copy; 2021-` + new Date().getUTCFullYear() + ` 8BitJake</span></div>`
+
 if (page == 'index') {
 await fetchAPI('https://my-ocular.jeffalo.net/api/user/8bitjake');
 document.getElementById('status').innerHTML = '<div id="status-dot"></div> <em title="Status taken from ocular.jeffalo.net">' + data.status + '</em>';
 let ocular = data
-await fetchAPI("https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/users/8bitjake");
-document.getElementById('status').innerHTML = data.profile.country + ' | ' + document.getElementById('status').innerHTML
+await fetchAPI("https://scratchdb.lefty.one/v3/user/info/8bitjake");
+document.getElementById('status').innerHTML = data.country + ' | ' + document.getElementById('status').innerHTML
 document.getElementById("status-dot").style.backgroundColor = ocular.color;
-document.getElementById('bio').innerHTML = '<strong>About Me</strong><br>' + replaceAll(data.profile.bio, '\n', '<br>')
-document.getElementById('wiwo').innerHTML = "<strong>What I'm Working On</strong><br>" + replaceAll(data.profile.status, '\n', '<br>')
+document.getElementById('bio').innerHTML = '<strong>About Me</strong><br>' + replaceAll(data.bio, '\n', '<br>')
+document.getElementById('wiwo').innerHTML = "<strong>What I'm Working On</strong><br>" + replaceAll(data.work, '\n', '<br>')
 } else if (page == 'chars') {
 
 await fetchAPI('chars.json')
@@ -63,8 +65,11 @@ await fetchAPI('posts.json')
 for (let i = 0; i < data.length; i++) {
   postData = data[i];
 createPost(i);
+var date = postData.date
+      console.log(postData,date)
+      if(!date) date = 'Unknown Date'
 document.getElementsByClassName('user')[i].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;">'
-document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><div style="position:relative; bottom:1em;"><span>Post ' + (i + 1) + '</span><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></div>';
+document.getElementsByClassName('post')[i].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><div style="position:relative; bottom:1em;"><span>Post ' + (i + 1) +'<br>'+ date + '</span>'+'<hr class="divider"><p class="postText">' + postData.content + '</p></div></div></div>';
 }
 let postContent = document.getElementsByClassName('postContent');
 /* var att = document.createAttribute('onclick');
@@ -90,9 +95,12 @@ for (let ii = 0; ii <= links.length - 1; ii++) {
     console.log(i)
     console.log(i == p)
     if (i == p) {
+      var date = postData.date
+      console.log(postData,date)
+      if(!date) date = 'Unknown Date'
   document.getElementsByClassName('main')[0].innerHTML = postTemplate;
-  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;"><br><br><span>Post ' + (i + 1) + '</span>'
-document.getElementsByClassName('post')[0].innerHTML +=  '<div class="postContent"><p class="postName">' + postData.title + '</p><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
+  document.getElementsByClassName('user')[0].innerHTML = '<img src="' + pfp + '" width="50px" height="auto" alt="' + username + '" style="border-radius: 9999px;"><p class="postName">' + postData.title + '</p><span>Post ' + (i + 1) +'<br>'+ date + '</span>'
+document.getElementsByClassName('post')[0].innerHTML +=  '<br><div class="postContent"><hr class="divider"><p class="postText">' + postData.content + '</p></div></div></a>';
 document.title += ' ' + postData.title
     }
   }
@@ -100,11 +108,6 @@ document.title += ' ' + postData.title
  } else {
    window.location.href="../"
  }
-} else if (page == 'bfancn') {
-  await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028');
-  document.getElementById('desc').innerHTML = data.description.split('\n').join('<br>')
-  await fetchAPI('https://desolate-badlands-78322.herokuapp.com/https://api.scratch.mit.edu/studios/30151028/projects');
-  document.getElementsByClassName('main')[0].innerHTML += '<br><div class="dark" style="cursor:pointer;" onclick="window.open(`http://scratch.mit.edu/projects/` + data[data.length - 1].id)">' + data[data.length - 1].title + ' ↗<br><br><img src="' + data[data.length - 1].image + '" alt="' + data[data.length - 1].title + '" style="border-radius: 5px; position:relative; bottom:10px;"></div>'
 }
 
 document.getElementsByTagName("body")[0].innerHTML=twemoji.parse(document.getElementsByTagName("body")[0].innerHTML, { folder: 'svg', ext: '.svg'});

@@ -7,6 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/svg+xml" href="/icon.svg">
         <meta charset="utf-8">
+
+        <meta name="description" content="8bit posts about shit: the movie" />
+    <meta property="og:url" content="http://8bitjake.github.io/blog/post-writer" />   
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="8BitJale's Website"/>
+    <meta property="og:description" content="8bit posts about shit: the movie" />
+    <meta property="og:image" content="https://8bitjake.github.io/icon.svg" />
+    <meta property="og:image:type" content="image/png" />
     </head>
     <body>
         <header>
@@ -38,8 +46,59 @@
     </div>
 </body>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="/assets/js/writer.js" defer></script>
+<script src="/assets/js/index.js" defer></script>
 <script type="text/javascript">
-document.getElementsByTagName("body")[0].innerHTML=twemoji.parse(document.getElementsByTagName("body")[0].innerHTML, { folder: 'svg', ext: '.svg'});
+    var weekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var dateObj = new Date();
+
+function copy(text) {
+    var input = document.createElement('textarea');
+    input.innerHTML = text;
+    document.body.appendChild(input);
+    input.select();
+    var result = document.execCommand('copy');
+    document.body.removeChild(input);
+    return result;
+}
+
+function getTime(hours,minutes){
+    var time = '';
+    var ampm = 'AM';
+    if(hours > 12){
+        ampm = 'PM';
+    }
+    if(hours == 0){
+        hours = 12;
+    }else if(hours > 12){
+        hours -= 12;
+    }
+    if(minutes < 10){
+        minutes = '0' + minutes;
+    }
+    time += hours + ':' + minutes + ' ' + ampm;
+    return time;
+}
+
+function copyJson() {
+    var txt = ',{"title":"' + document.getElementById('title').value + '","date":"'+ weekDays[dateObj.getUTCDay()]+', '+months[dateObj.getUTCMonth()]+' '+dateObj.getUTCDate()+', '+dateObj.getUTCFullYear()+', at '+getTime(dateObj.getHours(),dateObj.getMinutes())+'","content":"' + document.getElementById('content').value + '"}'
+    document.querySelector('#copy').innerHTML = txt
+    copy(document.querySelector('#copy').innerHTML)
+    alert('The JSON data has been copied!')
+}
+document.getElementsByTagName('textarea')[0].innerHTML = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis erat euismod, hendrerit nunc in, volutpat nisl. Aenean orci lorem<br>mattis non diam quis, ultricies aliquam neque. Quisque tempor ut felis et maximus. Maecenas lobortis justo posuere, dictum leo vitae,<br>aliquet sapien.'
+const whitespaceChars = [' ', '', '​', ' ']
+
+setInterval(function(){
+    
+    if (!whitespaceChars.includes(document.getElementById('title').value)) {
+         document.getElementsByClassName('postName')[0].innerHTML = document.getElementById('title').value
+        } else {
+            document.getElementsByClassName('postName')[0].innerHTML = '(invalid title)'
+        }
+        document.getElementsByClassName('postText')[0].innerHTML = document.getElementById('content').value
+}, 0);
+
+let page = "post-writer"
 </script>
 </html>
